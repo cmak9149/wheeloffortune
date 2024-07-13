@@ -36,3 +36,41 @@
     transform: rotate(360deg);
   }
 }
+
+header {
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+footer {
+  font-size: 48px;
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+main {
+  min-height: 75vh;
+}
+
+.letter {
+  display: inline;
+  font-size: 96px;
+  margin-right: 5px;
+}
+
+.word {
+  display: inline;
+  margin-right: 15px;
+}
+
+.rules p {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.toolbar button, .toolbar a {
+  margin-right: 20px;
+  margin-top: 20px;
+}

@@ -1,0 +1,10 @@
+[
+    { "phase": "Red Sea", "hint": "Place where a miracle took place" },
+    { "phase": "Luke", "hint": "A book in New Testament" },
+    { "phase": "Abraham", "hint": "A person in Old Testament" },
+    { "phase": "Genesis", "hint": "A book in the Old Testament" },
+    { "phase": "Judges", "hint": "A book in the Old Testament" },
+    { "phase": "Daniel", "hint": "A book in the Old Testament" },
+    { "phase": "David", "hint": "A person in Old Testament" },
+    { "phase": "Pharisees", "hint": "A group of people in New Testament" }
+]

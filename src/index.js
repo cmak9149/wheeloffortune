@@ -3,11 +3,24 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import { GameContextProvider } from './contexts/GameContext';
+import { BrowserRouter } from 'react-router-dom'; 
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <GameContextProvider>
+      <BrowserRouter>
+        <Header />
+        <ToastContainer closeButton={false} autoClose={3000} position={"bottom-right"} />
+        <App />
+        <Footer />      
+      </BrowserRouter>
+    </GameContextProvider>
   </React.StrictMode>
 );
 
