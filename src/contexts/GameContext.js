@@ -37,7 +37,7 @@ var GameContextProvider = ({children}) => {
             for(var l = 0; l < thisPhase.length; l++) {
                 const letter = thisPhase.substring(l, l+1);
                 if(re.test(letter)) {
-                    letterArray.push(letter.toLowerCase());
+                    letterArray.push(letter);
                     letterDisplayArray.push("_");
     
                     if (vowels.indexOf(letter) >= 0) {
@@ -72,12 +72,13 @@ var GameContextProvider = ({children}) => {
     const addLetter = (letter) => {
         const buffer = [...phaseDisplay];
         let letterCount = 0;
+        let letterLC = letter.toLowerCase();
         // go through 
         for(let w = 0; w < phase.length; w++) {
             for(let l = 0; l < phase[w].length; l++) {
-                if(letter === phase[w][l] && phaseDisplay[w][l] === "_") {
+                if(letterLC === phase[w][l].toLocaleLowerCase() && phaseDisplay[w][l] === "_") {
                     // replace phaseDisplay[w][l] with letter
-                    buffer[w][l] = letter;
+                    buffer[w][l] = phase[w][l];
                     letterCount++;
                 }
             }

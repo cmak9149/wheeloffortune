@@ -9,7 +9,7 @@ const Rules = () => {
       <p>A vowel cost 2 tokens</p>
       <p>Right answer will score 5 tokens</p>
       <p>If the player guess a consonant, each matching occurance in the answer worth 2 tokens.</p>
-      <p>You can guess any time during your turn.</p>
+      <p>You can guess once, any time during your turn.</p>
       <p>At the end of the game, the team with the most token wins</p>
       <p></p>
     </div>
