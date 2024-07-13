@@ -1,4 +1,4 @@
-import { useState, useReducer, useContext, createContext } from "react";
+import { useState, useContext, createContext } from "react";
 import Phases from "../data/phases.json";
 import { toast } from "react-toastify";
 
@@ -8,16 +8,19 @@ const GameContext = createContext();
 var GameContextProvider = ({children}) => {
     const [phase, setPhase] = useState("");
     const [vowels, setVowels] = useState([]);
-    const [currentPhase, setCurrentPhase] = useState(0);
+    const [currentPhase, setCurrentPhase] = useState(-1);
     const [phaseDisplay, setPhaseDisplay] = useState([]);
     const [hint, setHint] = useState("");
     const [footerDisplay, setFooterDisplay] = useState("");
     const [hasMoreGrame, setHasMoreGame] = useState(false);
     
     const gameInit = () => {
-        const {phase, hint} = Phases[currentPhase];
-        setHasMoreGame(currentPhase < Phases.length - 1);
-        initPhase(phase, hint);
+        if (currentPhase < 0) {
+            setCurrentPhase(0);
+            const {phase, hint} = Phases[0];
+            setHasMoreGame(Phases.length > 1);
+            initPhase(phase, hint);            
+        }
     }
 
     const initPhase = (loadingPhase, loadingHint) => {
@@ -47,6 +50,7 @@ var GameContextProvider = ({children}) => {
             }
             phaseTmp.push(letterArray);
             phaseDisplayTmp.push(letterDisplayArray);
+            return thisPhase;
         });
         setVowels(Object.keys(vowelsInAnswer));
         setPhase(phaseTmp);

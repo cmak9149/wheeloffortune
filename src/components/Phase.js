@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useGame } from "../contexts/GameContext";
 import { toast } from "react-toastify";
 
 const Phase = () => {
   const {buyAVowel, addLetter, gameInit, phaseDisplay, hint} = useGame();
-  const [lastLetter, setLastLetter] = useState("");
-
-  useEffect(() => { gameInit(); }, []);
+  const [lastLetter, setLastLetter] = useState(""); 
+  
+  useEffect(() => { 
+    gameInit(); 
+  });
 
   const typingHadler = (e) => {
     const val = e.target.value;
@@ -28,10 +30,10 @@ const Phase = () => {
   return (
     <div> 
         <h4>{hint}</h4>
-        {phaseDisplay.map(word => {
-          return <div className="word">{
-            word.map(letter => {
-              return <div className="letter">{letter}</div>
+        {phaseDisplay.map((word, index) => {
+          return <div key={ 'w'+ index} className="word">{
+            word.map((letter, index) => {
+              return <div key={ 'l'+ index} className="letter">{letter}</div>
             })
           }</div>
         
