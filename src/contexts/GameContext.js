@@ -39,9 +39,9 @@ var GameContextProvider = ({children}) => {
                 if(re.test(letter)) {
                     letterArray.push(letter);
                     letterDisplayArray.push("_");
-    
-                    if (vowels.indexOf(letter) >= 0) {
-                        vowelsInAnswer[letter] = true;    
+                    
+                    if (vowels.indexOf(letter.toLowerCase()) >= 0) {
+                        vowelsInAnswer[letter.toLowerCase()] = true;    
                     }
                 } else {
                     letterArray.push(letter);
@@ -66,7 +66,9 @@ var GameContextProvider = ({children}) => {
             // add letter
             addLetter(aVowel);
             setVowels(remainVowels); 
-        }        
+        } else {
+            toast.error(`No more vowel`); 
+        }       
     }
 
     const addLetter = (letter) => {
