@@ -1,7 +1,9 @@
 [
-    { "phase": "Red Sea", "hint": "Place where a miracle took place" },
-    { "phase": "Luke", "hint": "A book in New Testament" },
-    { "phase": "Abraham", "hint": "A person in Old Testament" },
+    { "phase": "Egypt", "hint": "A place in Bible" },
+    { "phase": "Peter", "hint": "One of the Jesus's disciple" },
+    { "phase": "Mary", "hint": "A person in New Testament" },
+    { "phase": "Jews", "hint": "A group of people in Bible" },
+    { "phase": "Jerusalem", "hint": "A place in Bible" },
     { "phase": "Genesis", "hint": "A book in the Old Testament" },
     { "phase": "Judges", "hint": "A book in the Old Testament" },
     { "phase": "Daniel", "hint": "A book in the Old Testament" },

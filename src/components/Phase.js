@@ -39,9 +39,10 @@ const Phase = () => {
         
         })}
         <br />
-        <br />
         Consonants: <input type='text' value={lastLetter} onChange={typingHadler} id="lastLetter" />
-        <button disabled={ lastLetter === "" } onClick={handleTry}>Try</button>
+        <button disabled={ lastLetter === "" } onClick={handleTry}>Try</button>        
+        <br />
+        [Consonants are b, c, d, f, g, h, j, k, l, m, n, p, q, r, s, t, v, w, x, y, z]
         <br />
         <button onClick={buyAVowel}>Buy a vowel</button>
     </div>
