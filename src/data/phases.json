@@ -1,12 +1,12 @@
 [
-    { "phase": "Egypt", "hint": "A place in Bible" },
-    { "phase": "Peter", "hint": "One of the Jesus's disciple" },
-    { "phase": "Mary", "hint": "A person in New Testament" },
+    { "phase": "Egypt", "hint": "A country in Old Testament" },
+    { "phase": "Peter", "hint": "One of the Jesus's disciples" },
+    { "phase": "Mary", "hint": "A woman in New Testament" },
     { "phase": "Jews", "hint": "A group of people in Bible" },
-    { "phase": "Jerusalem", "hint": "A place in Bible" },
+    { "phase": "Jerusalem", "hint": "A city in Bible" },
     { "phase": "Genesis", "hint": "A book in the Old Testament" },
     { "phase": "Judges", "hint": "A book in the Old Testament" },
     { "phase": "Daniel", "hint": "A book in the Old Testament" },
-    { "phase": "David", "hint": "A person in Old Testament" },
+    { "phase": "David", "hint": "A king in Old Testament" },
     { "phase": "Pharisees", "hint": "A group of people in New Testament" }
 ]
