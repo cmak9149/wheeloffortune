@@ -87,3 +87,10 @@ main {
 .responseSection {
   margin-top: 10px;
 }
+
+.responseSection button.letterKey {
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}

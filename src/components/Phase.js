@@ -39,7 +39,7 @@ const Phase = () => {
         })}
         <br />
         <div className="responseSection">
-          Consonants: {consonants.map(c => {
+          {consonants.map(c => {
             return <button key={c} className="letterKey" onClick={ () => { tryAConsonant(c) } } >{c}</button>
           })}
           <br />
