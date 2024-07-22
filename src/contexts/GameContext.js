@@ -102,11 +102,12 @@ var GameContextProvider = ({children}) => {
         let hasUnknown = false;
         // first, there must be at least unknown before guess can be proceed
         phaseDisplay.map(word => {
-            word.map(l => {
+            return word.map(l => {
                 if (l === "_") {
                     hasUnknown = true;
                 }
-            });
+                return true;
+            }); 
         });
 
         if (!hasUnknown) {

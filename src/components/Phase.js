@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useGame } from "../contexts/GameContext";
-import { toast } from "react-toastify";
 
 const Phase = () => {
   const allConsonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -19,7 +18,7 @@ const Phase = () => {
  
   const takeAGuess = () => {
     let guess = window.prompt("Put in your guess");
-    if (guess != "") {
+    if (guess !== "") {
       const result = tryAGuess(guess);
       if (result) {
         setConsonants(allConsonants);

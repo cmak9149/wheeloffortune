@@ -1,8 +1,8 @@
 [
-    { "phase": "Moses", "hint": "A man in Old Testament" },
+    { "phase": "Moses", "hint": "A leader in Old Testament" },
     { "phase": "John", "hint": "One of the Jesus's disciples" },
     { "phase": "Joseph", "hint": "A man in old Testament" },
     { "phase": "David", "hint": "A person in Old Testament" },
     { "phase": "fishman", "hint": "A job in New Testament time" },
-    { "phase": "Samson", "hint": "A leader in old Testament" }
+    { "phase": "Samson", "hint": "A judge in old Testament" }
 ]
