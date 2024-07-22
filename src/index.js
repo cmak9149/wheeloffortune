@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import { GameContextProvider } from './contexts/GameContext';
 import { BrowserRouter } from 'react-router-dom'; 
 import { ToastContainer } from "react-toastify";
@@ -15,9 +14,8 @@ root.render(
   <React.StrictMode>
     <GameContextProvider>
       <BrowserRouter>
-        <Header />
-        <Footer />
         <ToastContainer closeButton={false} autoClose={2000} position={"top-right"} />
+        <Header />        
         <App />
       </BrowserRouter>
     </GameContextProvider>

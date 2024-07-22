@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 const GameContext = createContext();
 
 var GameContextProvider = ({children}) => {
+    const [token, setToken] = useState(15);
     const [phase, setPhase] = useState("");
     const [vowels, setVowels] = useState([]);
     const [currentPhase, setCurrentPhase] = useState(-1);
@@ -66,12 +67,16 @@ var GameContextProvider = ({children}) => {
             // add letter
             addLetter(aVowel);
             setVowels(remainVowels); 
+            setToken(token - 2);
         } else {
             toast.error(`No more vowel`); 
         }       
     }
 
     const addLetter = (letter) => {
+        let newBalance = token;
+        newBalance--;
+
         const buffer = [...phaseDisplay];
         let letterCount = 0;
         let letterLC = letter.toLowerCase();
@@ -85,9 +90,53 @@ var GameContextProvider = ({children}) => {
                 }
             }
         }
+        newBalance += letterCount * 2;
+
         letterCount > 0? toast.info(`There are ${letterCount} ${letter}`): toast.error(`There is no ${letter}`); 
         setPhaseDisplay(buffer);
         setFooterDisplay(footerDisplay + " [" + letter + "]" + letterCount);
+        setToken(newBalance);
+    }
+
+    const tryAGuess = (guess) => {
+        let hasUnknown = false;
+        // first, there must be at least unknown before guess can be proceed
+        phaseDisplay.map(word => {
+            word.map(l => {
+                if (l === "_") {
+                    hasUnknown = true;
+                }
+            });
+        });
+
+        if (!hasUnknown) {
+            toast.error("Cannot guess there is no unknown letter. Go to next game");
+            getNextGame();
+            return false;
+        }
+
+        let newBalance = token;
+        newBalance -= 1;
+        // at least one unknown 
+        let santizedGuess = guess.toLowerCase();
+        santizedGuess = santizedGuess.replace(" ", "");
+        santizedGuess = santizedGuess.replace(",", "");
+
+        let santizeAnswer = phase.join('').toLowerCase();
+        santizeAnswer = santizeAnswer.replace(" ", "");
+        santizeAnswer = santizeAnswer.replace(/,/g, "");
+
+        if (santizeAnswer === santizedGuess) {
+            newBalance += 5;
+            toast.info("You got it right: " + santizeAnswer);
+            getNextGame();
+            setToken(newBalance);
+            return true; 
+        } else {
+            setToken(newBalance);
+            toast.error("It is not " + guess);
+            return false;
+        }        
     }
 
     const getNextGame = () => {
@@ -100,7 +149,7 @@ var GameContextProvider = ({children}) => {
         setPhaseDisplay(phase);
     }
 
-    const gameApi = {phaseDisplay, hint, footerDisplay, hasMoreGrame, gameInit, buyAVowel, showAnswer, getNextGame, addLetter}
+    const gameApi = {token, tryAGuess, phaseDisplay, hint, footerDisplay, hasMoreGrame, gameInit, buyAVowel, showAnswer, getNextGame, addLetter}
     return <GameContext.Provider value={gameApi}>
         {children}
     </GameContext.Provider>

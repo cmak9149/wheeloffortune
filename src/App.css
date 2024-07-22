@@ -56,13 +56,14 @@ main {
 
 .letter {
   display: inline;
-  font-size: 96px;
-  margin-right: 5px;
+  font-size: 24px;
+  margin-right: 20px;
 }
 
 .word {
   display: inline;
   margin-right: 15px;
+  margin-bottom: 20PX;
 }
 
 .rules p {
@@ -73,4 +74,16 @@ main {
 .toolbar button, .toolbar a {
   margin-right: 20px;
   margin-top: 20px;
+}
+
+.letterKey {
+  margin-right: 10px;
+}
+
+.word {
+  margin-bottom:  10px;
+}
+
+.responseSection {
+  margin-top: 10px;
 }

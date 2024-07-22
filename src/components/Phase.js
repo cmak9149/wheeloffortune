@@ -3,28 +3,28 @@ import { useGame } from "../contexts/GameContext";
 import { toast } from "react-toastify";
 
 const Phase = () => {
-  const {buyAVowel, addLetter, gameInit, phaseDisplay, hint} = useGame();
-  const [lastLetter, setLastLetter] = useState(""); 
+  const allConsonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+  const { tryAGuess, buyAVowel, addLetter, gameInit, phaseDisplay, hint} = useGame();
+  const [ consonants, setConsonants ] = useState(allConsonants);
   
   useEffect(() => { 
     gameInit(); 
   });
 
-  const typingHadler = (e) => {
-    const val = e.target.value;
-    const lastLetterTyped = val.substring(val.length -1);
-    if(["a", "e", "i", "o", "u"].indexOf(lastLetterTyped) >= 0) {
-      toast.error(`Vowel ${lastLetterTyped} is not allowed`);
-      setLastLetter("");
-    } else {
-      setLastLetter(lastLetterTyped);
-    }    
+  const tryAConsonant = (tryCon) => {
+    addLetter(tryCon);
+    // remove the c from consants
+    setConsonants(consonants.filter(c => { return c !== tryCon }) );
   }
-
-  const handleTry = (e) => {
-    addLetter(lastLetter);
-    document.getElementById("lastLetter").focus();
-    setLastLetter("");
+ 
+  const takeAGuess = () => {
+    let guess = window.prompt("Put in your guess");
+    if (guess != "") {
+      const result = tryAGuess(guess);
+      if (result) {
+        setConsonants(allConsonants);
+      }
+    }      
   }
 
   return (
@@ -39,12 +39,16 @@ const Phase = () => {
         
         })}
         <br />
-        Consonants: <input type='text' value={lastLetter} onChange={typingHadler} id="lastLetter" />
-        <button disabled={ lastLetter === "" } onClick={handleTry}>Try</button>        
-        <br />
-        [Consonants are b, c, d, f, g, h, j, k, l, m, n, p, q, r, s, t, v, w, x, y, z]
-        <br />
-        <button onClick={buyAVowel}>Buy a vowel</button>
+        <div className="responseSection">
+          Consonants: {consonants.map(c => {
+            return <button key={c} className="letterKey" onClick={ () => { tryAConsonant(c) } } >{c}</button>
+          })}
+          <br />
+          <br />
+          <button onClick={buyAVowel}>Buy a vowel</button>&nbsp;&nbsp;&nbsp;
+          <button onClick={takeAGuess}>Take a guess</button>          
+        </div>
+
     </div>
   )
 }
