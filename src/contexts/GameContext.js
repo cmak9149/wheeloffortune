@@ -14,6 +14,7 @@ var GameContextProvider = ({children}) => {
     const [hint, setHint] = useState("");
     const [footerDisplay, setFooterDisplay] = useState("");
     const [hasMoreGrame, setHasMoreGame] = useState(false);
+    const [gameEnd, setGameEnd] = useState(false);
     
     const gameInit = () => {
         if (currentPhase < 0) {
@@ -56,7 +57,8 @@ var GameContextProvider = ({children}) => {
         setVowels(Object.keys(vowelsInAnswer));
         setPhase(phaseTmp);
         setPhaseDisplay(phaseDisplayTmp);
-        setHint(loadingHint);
+        const hintIndex = (currentPhase < 0)? 1: currentPhase + 2;
+        setHint(hintIndex + ") " +  loadingHint);
         setFooterDisplay("");
     }
 
@@ -132,6 +134,11 @@ var GameContextProvider = ({children}) => {
             toast.info("You got it right: " + santizeAnswer);
             getNextGame();
             setToken(newBalance);
+            if (currentPhase === Phases.length  - 1) { 
+                setGameEnd(true);
+                window.alert("Congradulation. You completed the game");
+            }
+
             return true; 
         } else {
             setToken(newBalance);
@@ -141,16 +148,19 @@ var GameContextProvider = ({children}) => {
     }
 
     const getNextGame = () => {
-        setCurrentPhase(currentPhase + 1);
-        const {phase, hint} = Phases[currentPhase + 1];
-        initPhase(phase, hint);
+        if (currentPhase < Phases.length  - 1) {
+            setCurrentPhase(currentPhase + 1);
+            const {phase, hint} = Phases[currentPhase + 1];
+            initPhase(phase, hint);
+            setHasMoreGame(Phases.length > currentPhase + 2);
+        } 
     }
 
     const showAnswer = () => {
         setPhaseDisplay(phase);
     }
 
-    const gameApi = {token, tryAGuess, phaseDisplay, hint, footerDisplay, hasMoreGrame, gameInit, buyAVowel, showAnswer, getNextGame, addLetter}
+    const gameApi = {token, tryAGuess, phaseDisplay, hint, footerDisplay, hasMoreGrame, gameEnd, gameInit, buyAVowel, showAnswer, getNextGame, addLetter}
     return <GameContext.Provider value={gameApi}>
         {children}
     </GameContext.Provider>

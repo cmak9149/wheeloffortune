@@ -1,8 +1,8 @@
 [
-    { "phase": "Moses", "hint": "A leader in Old Testament" },
+    { "phase": "Moses", "hint": "This person talked to God directly in Old Testament" },
     { "phase": "John", "hint": "One of the Jesus's disciples" },
-    { "phase": "Joseph", "hint": "A man in old Testament" },
-    { "phase": "David", "hint": "A person in Old Testament" },
-    { "phase": "fishman", "hint": "A job in New Testament time" },
+    { "phase": "Joseph", "hint": "This man was a slave, prisoner and high rank officer in old Testament" },
+    { "phase": "David", "hint": "A king in Old Testament" },
+    { "phase": "fishman", "hint": "A job in New Testament time (singular)" },
     { "phase": "Samson", "hint": "A judge in old Testament" }
 ]

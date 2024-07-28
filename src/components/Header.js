@@ -2,7 +2,7 @@ import { useGame } from "../contexts/GameContext";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const {token, footerDisplay, getNextGame} = useGame();
+  const {token, footerDisplay} = useGame();
   return (
     <header>
         <div>Attempts: {footerDisplay}</div>
@@ -10,7 +10,6 @@ const Header = () => {
             <span>[ {token} ]</span>&nbsp;&nbsp;&nbsp; 
             <Link to="/">Game</Link>
             <Link to="/rules">Rules</Link>
-            <button onClick={getNextGame}>New Games</button>
         </div>
     </header>
   )

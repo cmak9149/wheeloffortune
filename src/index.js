@@ -14,7 +14,7 @@ root.render(
   <React.StrictMode>
     <GameContextProvider>
       <BrowserRouter>
-        <ToastContainer closeButton={false} autoClose={2000} position={"top-right"} />
+        <ToastContainer closeButton={false} autoClose={500} position={"top-right"} />
         <Header />        
         <App />
       </BrowserRouter>

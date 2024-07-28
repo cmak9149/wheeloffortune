@@ -3,7 +3,7 @@ import { useGame } from "../contexts/GameContext";
 
 const Phase = () => {
   const allConsonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-  const { tryAGuess, buyAVowel, addLetter, gameInit, phaseDisplay, hint} = useGame();
+  const { tryAGuess, buyAVowel, addLetter, gameInit, phaseDisplay, hint, hasMoreGrame, gameEnd, getNextGame} = useGame();
   const [ consonants, setConsonants ] = useState(allConsonants);
   
   useEffect(() => { 
@@ -26,6 +26,14 @@ const Phase = () => {
     }      
   }
 
+  const tryNextGame = () => {
+    let text = "Are you sure to give up this game?";
+    if (window.confirm(text) == true) {
+      getNextGame( );
+      setConsonants(allConsonants);
+    }  
+  }
+
   return (
     <div> 
         <h4>{hint}</h4>
@@ -40,12 +48,21 @@ const Phase = () => {
         <br />
         <div className="responseSection">
           {consonants.map(c => {
-            return <button key={c} className="letterKey" onClick={ () => { tryAConsonant(c) } } >{c}</button>
+            return <button  disabled={gameEnd} key={c} className="letterKey" onClick={ () => { tryAConsonant(c) } } >{c}</button>
           })}
           <br />
           <br />
-          <button onClick={buyAVowel}>Buy a vowel</button>&nbsp;&nbsp;&nbsp;
-          <button onClick={takeAGuess}>Take a guess</button>          
+          <div className="game-control">
+            <div>
+              <button disabled={gameEnd} onClick={buyAVowel}>Buy a vowel</button>&nbsp;&nbsp;&nbsp;
+              <button disabled={gameEnd} onClick={takeAGuess}>Take a guess</button>
+            </div>
+            <div>
+              <button disabled={!hasMoreGrame} onClick={tryNextGame}>New Games</button>
+            </div>
+          </div>
+
+                    
         </div>
 
     </div>
