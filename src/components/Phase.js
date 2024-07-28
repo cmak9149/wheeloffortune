@@ -28,7 +28,7 @@ const Phase = () => {
 
   const tryNextGame = () => {
     let text = "Are you sure to give up this game?";
-    if (window.confirm(text) == true) {
+    if (window.confirm(text) === true) {
       getNextGame( );
       setConsonants(allConsonants);
     }  
